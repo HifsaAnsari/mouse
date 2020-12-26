@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            color: #fff;
+            width: 100%;
+            background: #000;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 78px;
+            margin: 100px 0;
+            transition: all ease 0.5s;
+        }
+        
+        h1:hover {
+            color: chartreuse;
+        }
+        
+        .cursor {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-color: #fff;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            position: fixed;
+            z-index: 999;
+            top: -8px;
+            left: -8px;
+            transform: translate(-8px, -8px);
+        }
+        
+        .cursorHover {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            position: fixed;
+            z-index: 999;
+            top: -8px;
+            left: -8px;
+            transform: translate(-8px, -8px);
+        }
+        
+        img {
+            width: 30%;
+            height: 40%;
+            position: relative;
+            border: 2px solid #292929;
+            border-radius: 50%;
+        }
+        
+        img:hover {
+            filter: grayscale(25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor" style=" background-color:coral"></div>
+
+    <div class="cursorHover "></div>
+    <img src="set.jpg " alt=" " class=" alert ">
+    <h1 class="alert "> Hey! touch me</h1>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=" anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js " integrity="sha256-3arngJBQR3FTyeRtL3muAGFaGcL8iHsubYOqq48mBLw=" crossorigin=" anonymous "></script>
+
+    <script>
+        var $cursor = $('.cursor');
+        var $cursorHover = $('.cursorHover');
+
+
+
+        function cursorMover(e) {
+            gsap.to($cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                stagger: 0.002
+            });
+            gsap.to($cursorHover, {
+                x: e.clientX,
+                y: e.clientY,
+
+            });
+        }
+
+
+        function cursorHover(e) {
+            gsap.to($cursor, {
+                scale: 0.5
+            });
+            gsap.to($cursorHover, {
+                scale: 3
+            });
+        }
+
+
+
+        function cursor(e) {
+            gsap.to($cursor, {
+                scale: 1
+            });
+            gsap.to($cursorHover, {
+                scale: 1
+            });
+        }
+
+        $(window).on('mousemove', cursorMover);
+
+
+        $('.alert').hover(cursorHover, cursor);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+    <title>CodePen - Custom Cursor - Grow on Hover</title>
+    <style>
+        body {
+            background-color: #ffff;
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            cursor: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Outer Cursor Circle */
+        
+        .cursor--outer {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid #232323;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+        }
+        /* Inner Cursor Circle */
+        
+        .cursor--inner {
+            width: 4px;
+            height: 4px;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            border-radius: 50%;
+            z-index: 11000;
+            background: #232323;
+        }
+        /* Google Link */
+        
+        .link {
+            cursor: none;
+            padding: 30px;
+            transition: opacity 1s;
+        }
+        
+        .link:hover {
+            opacity: .2;
+        }
+    </style>
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+
+    <div class="cursor cursor--outer"></div>
+    <div class="cursor cursor--inner"></div>
+
+    <a href="https://google.com" class="link" target="_blank">Google</a>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js'></script>
+    <script id="rendered-js">
+        // set the starting position of the cursor outside of the screen
+        var clientX = -300,
+            clientY = -300,
+            // elements 
+            outerCursor = document.querySelector(".cursor--outer"),
+            innerCursor = document.querySelector(".cursor--inner"),
+            link = document.querySelector(".link");
+
+        var initCursor = function() {
+            // add listener to track the current mouse position
+            document.addEventListener("mousemove", function(e) {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            });
+
+            var render = function() {
+                TweenMax.set(outerCursor, {
+                    x: clientX,
+                    y: clientY,
+                    delay: .08,
+                    ease: Power1.easeOut
+                });
+
+
+                TweenMax.set(innerCursor, {
+                    x: clientX,
+                    y: clientY
+                });
+
+
+                requestAnimationFrame(render);
+            };
+
+            requestAnimationFrame(render);
+        };
+
+        initCursor();
+
+        // // hover state
+        function growOnHover() {
+            link.addEventListener("mouseover", function() {
+                TweenMax.to(outerCursor, 1, {
+                    scale: 2
+                });
+            });
+        } // Problem was here ... didn't close the function, 
+        // but you don't need a function around the listener
+        // I'll do the mouseout listener below
+
+        link.addEventListener("mouseout", function() {
+            TweenMax.to(outerCursor, 1, {
+                scale: 1
+            });
+        });
+
+        growOnHover();
+        //# sourceURL=pen.js
+    </script>
+</body>
+
+</html>

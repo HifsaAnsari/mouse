@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+    <title>CodePen - Custom Dot Cursor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400|Raleway:300);
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-family: "Open Sans", Helvetica, arial, sans-serif;
+            color: #dc5656;
+            background-color: #333333;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Raleway", "Open Sans", sans-serif;
+            text-align: center;
+        }
+        
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .header {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50px;
+            height: 2px;
+            background-color: #dc5656;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        
+        .pen__subheading {
+            margin-bottom: 0;
+        }
+        
+        .pen__subheading a {
+            color: #dc5656;
+        }
+        
+        .pen__subheading a:hover,
+        .pen__subheading a:focus {
+            color: #e58080;
+        }
+        
+        .container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .col {
+            padding: 1rem;
+        }
+        
+        @media (min-width: 800px) {
+            .col {
+                width: 50%;
+                float: left;
+            }
+            .col:nth-of-type(2n+1) {
+                clear: left;
+            }
+        }
+        
+        .col.col--full {
+            width: 100%;
+        }
+        
+        html,
+        html *,
+        body,
+        body * {
+            cursor: none;
+        }
+        
+        .cursor-dot,
+        .cursor-dot-outline {
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            opacity: 0;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+        }
+        
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #dc5656;
+        }
+        
+        .cursor-dot-outline {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(229, 128, 128, 0.5);
+        }
+    </style>
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+    <header class="header container">
+        <h1 class="pen__heading">Custom Dot Cursor</h1>
+        <h4 class="pen__subheading">By: <a href="http://kylebrumm.com" target="_blank">Kyle Brumm</a></h4>
+    </header>
+    <main class="main container">
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/PjXHrNQT56o/800x500">
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/PfinelUfh4E/800x500">
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/Pb4FBi7Oq7o/800x500">
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/stL-jEO7FGc/800x500">
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/Ws92xzbSris/800x500">
+            </a>
+        </div>
+        <div class="col">
+            <a href="#">
+                <img src="https://source.unsplash.com/N7Q0Ir-hXeA/800x500">
+            </a>
+        </div>
+    </main>
+    <div class="cursor-dot-outline"></div>
+    <div class="cursor-dot"></div>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script id="rendered-js">
+        var cursor = {
+            delay: 8,
+            _x: 0,
+            _y: 0,
+            endX: window.innerWidth / 2,
+            endY: window.innerHeight / 2,
+            cursorVisible: true,
+            cursorEnlarged: false,
+            $dot: document.querySelector('.cursor-dot'),
+            $outline: document.querySelector('.cursor-dot-outline'),
+
+            init: function() {
+                // Set up element sizes
+                this.dotSize = this.$dot.offsetWidth;
+                this.outlineSize = this.$outline.offsetWidth;
+
+                this.setupEventListeners();
+                this.animateDotOutline();
+            },
+
+            //     updateCursor: function(e) {
+            //         var self = this;
+
+            //         console.log(e)
+
+            //         // Show the cursor
+            //         self.cursorVisible = true;
+            //         self.toggleCursorVisibility();
+
+            //         // Position the dot
+            //         self.endX = e.pageX;
+            //         self.endY = e.pageY;
+            //         self.$dot.style.top = self.endY + 'px';
+            //         self.$dot.style.left = self.endX + 'px';
+            //     },
+
+            setupEventListeners: function() {
+                var self = this;
+
+                // Anchor hovering
+                document.querySelectorAll('a').forEach(function(el) {
+                    el.addEventListener('mouseover', function() {
+                        self.cursorEnlarged = true;
+                        self.toggleCursorSize();
+                    });
+                    el.addEventListener('mouseout', function() {
+                        self.cursorEnlarged = false;
+                        self.toggleCursorSize();
+                    });
+                });
+
+                // Click events
+                document.addEventListener('mousedown', function() {
+                    self.cursorEnlarged = true;
+                    self.toggleCursorSize();
+                });
+                document.addEventListener('mouseup', function() {
+                    self.cursorEnlarged = false;
+                    self.toggleCursorSize();
+                });
+
+
+                document.addEventListener('mousemove', function(e) {
+                    // Show the cursor
+                    self.cursorVisible = true;
+                    self.toggleCursorVisibility();
+
+                    // Position the dot
+                    self.endX = e.pageX;
+                    self.endY = e.pageY;
+                    self.$dot.style.top = self.endY + 'px';
+                    self.$dot.style.left = self.endX + 'px';
+                });
+
+                // Hide/show cursor
+                document.addEventListener('mouseenter', function(e) {
+                    self.cursorVisible = true;
+                    self.toggleCursorVisibility();
+                    self.$dot.style.opacity = 1;
+                    self.$outline.style.opacity = 1;
+                });
+
+                document.addEventListener('mouseleave', function(e) {
+                    self.cursorVisible = true;
+                    self.toggleCursorVisibility();
+                    self.$dot.style.opacity = 0;
+                    self.$outline.style.opacity = 0;
+                });
+            },
+
+            animateDotOutline: function() {
+                var self = this;
+
+                self._x += (self.endX - self._x) / self.delay;
+                self._y += (self.endY - self._y) / self.delay;
+                self.$outline.style.top = self._y + 'px';
+                self.$outline.style.left = self._x + 'px';
+
+                requestAnimationFrame(this.animateDotOutline.bind(self));
+            },
+
+            toggleCursorSize: function() {
+                var self = this;
+
+                if (self.cursorEnlarged) {
+                    self.$dot.style.transform = 'translate(-50%, -50%) scale(0.75)';
+                    self.$outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                } else {
+                    self.$dot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    self.$outline.style.transform = 'translate(-50%, -50%) scale(1)';
+                }
+            },
+
+            toggleCursorVisibility: function() {
+                var self = this;
+
+                if (self.cursorVisible) {
+                    self.$dot.style.opacity = 1;
+                    self.$outline.style.opacity = 1;
+                } else {
+                    self.$dot.style.opacity = 0;
+                    self.$outline.style.opacity = 0;
+                }
+            }
+        };
+
+
+        cursor.init();
+        //# sourceURL=pen.js
+    </script>
+</body>
+
+</html>

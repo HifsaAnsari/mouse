@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            width: 100vW;
+            height: 100vh;
+            z-index: 1;
+        }
+        
+        .maincontainer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            background-color: #FFDD3C;
+        }
+        
+        .background {
+            display: inline-table;
+            width: 50%;
+            height: 100%;
+            background: url("drdr.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blend-mode: hard-light;
+        }
+        
+        .imgContainer {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .imgg {
+            height: 100%;
+        }
+        
+        .imgContainer::after {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background: #FFDD3C;
+            animation: imgcontainer-slider 1s linear forwards;
+            background-blend-mode: hard-light;
+        }
+        
+        @keyframes imgcontainer-slider {
+            50% {
+                left: 0;
+            }
+            60% {
+                left: 0;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .maincontainer #myText {
+            text-shadow: -1px -1px rgb(245, 245, 245), 1px 1px #333;
+            font-size: 58px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 900;
+            text-align: center;
+            color: WHITE;
+            -webkit-writing-mode: vertical-rl;
+            -ms-writing-mode: tb-rl;
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+            text-transform: uppercase;
+        }
+        
+        .heading {
+            color: rgb(29, 18, 5);
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+            text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+            font-size: 48px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            margin-top: 250px;
+        }
+        
+        .sub {
+            color: rgb(29, 18, 5);
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+            font-size: 20px;
+            margin-top: 15px;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .hr {
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+            width: 500px;
+            margin: 0 auto;
+            height: 2px;
+            border: none;
+            background: linear-gradient( to left, transparent, rgb(49, 8, 22), transparent);
+            text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+        }
+        
+        .heading span,
+        .sub span {
+            display: inline-block;
+        }
+        
+        .maincontainer #mymText {
+            text-shadow: -1px -1px rgb(245, 245, 245), 1px 1px #333;
+            font-size: 58px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 900;
+            text-align: center;
+            color: WHITE;
+            -webkit-writing-mode: vertical-rl;
+            -ms-writing-mode: tb-rl;
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js" integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js" integrity="sha256-AJvwDTgx+2JZWtsg4XDtKI2KFXST+2AosYiLBYde2PM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js" integrity="sha256-7sov0P4cWkfKMVHQ/NvnWVqcLSPYrPwxdz+MtZ+ahl8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.1/gsap.min.js" integrity="sha256-gVSqkFfjNn2dPkux+F25ZFwB/AaQCRqtxX266Em6NJk=" crossorigin="anonymous"></script>
+
+    <div class="loader"></div>
+    <div class="maincontainer">
+
+        <div class="background">
+
+            <h1 class="heading"> Hifsa Ansari</h1>
+            <hr class="hr">
+            <h2 class="sub"> Mariposa &nbsp;Ruzica</h2>
+        </div>
+        <div id="myText"></div>
+        <div class="imgContainer">
+            <div class="imgcontainer-slider">
+            </div>
+            <img src="q.png" class="imgg">
+        </div>
+
+        <div id="mymText"></div>
+
+    </div>
+
+
+    <script>
+        var text = document.getElementById("myText");
+        var typewriter = new Typewriter(text, {
+            loop: true
+        });
+        typewriter.typeString('Mariposa')
+            .pauseFor(200)
+
+        .start();
+
+        var text = document.getElementById("mymText");
+        var typewriter = new Typewriter(text, {
+            loop: true
+        });
+        typewriter.typeString('Ruzica')
+            .pauseFor(200)
+
+        .start();
+
+
+        $(function() {
+            $(".heading").lettering();
+            $(".sub").lettering();
+
+            gsap.from(".heading span", {
+                duration: 1,
+                x: 10,
+                opacity: 0,
+                stagger: .1,
+                ease: "bounce.in"
+            });
+
+            gsap.from(".sub span", {
+                duration: 1,
+                y: 10,
+                delay: 1.5,
+                opacity: 0,
+                stagger: .1,
+                ease: "bounce.in"
+            });
+
+            gsap.from(".hr", {
+                duration: 2,
+                x: 400,
+                delay: 4,
+                opacity: 0,
+                ease: "circ.out"
+            });
+        });
+        //image
+        let img = document.querySelector(".img");
+        //Animation
+        TweenMax.from(img, 0.5, {
+            opacity: 0,
+            delay: 0.5,
+        })
+    </script>
+</body>
+
+</html>

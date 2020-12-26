@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            width: 100vW;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .maincontainer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            background-color: #FFDD3C;
+        }
+        
+        .background {
+            width: 50%;
+            height: 100%;
+        }
+        
+        .background img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .imgContainer {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .imgg {
+            height: 100%;
+        }
+        
+        .imgContainer::after {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background: #FFDD3C;
+            animation: imgcontainer-slider 1s linear forwards;
+        }
+        
+        @keyframes imgcontainer-slider {
+            50% {
+                left: 0;
+            }
+            60% {
+                left: 0;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        
+        .maincontainer #myText {
+            text-shadow: -1px -1px rgb(245, 245, 245), 1px 1px #333;
+            font-size: 58px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 900;
+            text-align: center;
+            color: WHITE;
+            writing-mode: vertical-lr;
+        }
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js" integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js" integrity="sha256-AJvwDTgx+2JZWtsg4XDtKI2KFXST+2AosYiLBYde2PM=" crossorigin="anonymous"></script>
+
+
+
+    <div class="maincontainer">
+
+        <div class="background">
+            <img src="drdr.jpg">
+        </div>
+
+
+        <div class="imgContainer">
+            <div class="imgcontainer-slider"></div>
+            <img src="q.png" class="imgg">
+        </div>
+        <div id="myText"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        var text = document.getElementById("myText");
+        var typewriter = new Typewriter(text, {
+            loop: true
+        });
+        typewriter.typeString('Hifsa Ansari  ')
+            .pauseFor(200)
+            .deleteAll()
+            .typeString(' Mariposa Ruzica ')
+            .pauseFor(400)
+            .deleteAll()
+            .typeString(' Software engineer ')
+            .pauseFor(200)
+            .deleteAll()
+        typewriter.typeString(' 2016-SE-064')
+            .start();
+
+        //image
+        let img = document.querySelector(".img");
+        //Animation
+        TweenMax.from(img, 0.5, {
+            opacity: 0,
+            delay: 0.5,
+        })
+    </script>
+</body>
+
+</html>

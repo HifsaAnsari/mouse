@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+    <title>CodePen - Arrow animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <style>
+        .arrow {
+            --active: #fff;
+            --border: rgba(255, 255, 255, .12);
+            display: block;
+            position: relative;
+            width: 44px;
+            height: 44px;
+        }
+        
+        .arrow.left {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+        
+        .arrow i {
+            display: block;
+            position: absolute;
+            margin: -10px 0 0 -10px;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 50%;
+        }
+        
+        .arrow i:before,
+        .arrow i:after {
+            content: '';
+            width: 10px;
+            height: 2px;
+            border-radius: 1px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background: var(--active);
+            margin: -1px 0 0 -5px;
+            display: block;
+            -webkit-transform-origin: 9px 50%;
+            transform-origin: 9px 50%;
+        }
+        
+        .arrow i:before {
+            -webkit-transform: rotate(-40deg);
+            transform: rotate(-40deg);
+        }
+        
+        .arrow i:after {
+            -webkit-transform: rotate(40deg);
+            transform: rotate(40deg);
+        }
+        
+        .arrow:before,
+        .arrow:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 1px;
+            right: 1px;
+            top: 1px;
+            bottom: 1px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+        }
+        
+        .arrow svg {
+            width: 44px;
+            height: 44px;
+            display: block;
+            position: relative;
+            z-index: 1;
+            color: var(--active);
+            stroke-width: 2px;
+            stroke-dashoffset: 126;
+            stroke-dasharray: 126 126 0;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        
+        .arrow.animate svg {
+            -webkit-animation: stroke 1s ease forwards .3s;
+            animation: stroke 1s ease forwards .3s;
+        }
+        
+        .arrow.animate i {
+            -webkit-animation: arrow 1.6s ease forwards;
+            animation: arrow 1.6s ease forwards;
+        }
+        
+        .arrow.animate i:before {
+            -webkit-animation: arrowUp 1.6s ease forwards;
+            animation: arrowUp 1.6s ease forwards;
+        }
+        
+        .arrow.animate i:after {
+            -webkit-animation: arrowDown 1.6s ease forwards;
+            animation: arrowDown 1.6s ease forwards;
+        }
+        
+        @-webkit-keyframes stroke {
+            52% {
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                stroke-dashoffset: 0;
+            }
+            52.1% {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+                stroke-dashoffset: 0;
+            }
+            100% {
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                stroke-dashoffset: 126;
+            }
+        }
+        
+        @keyframes stroke {
+            52% {
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                stroke-dashoffset: 0;
+            }
+            52.1% {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+                stroke-dashoffset: 0;
+            }
+            100% {
+                -webkit-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+                stroke-dashoffset: 126;
+            }
+        }
+        
+        @-webkit-keyframes arrow {
+            0%,
+            100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+                opacity: 1;
+            }
+            23% {
+                -webkit-transform: translateX(17px);
+                transform: translateX(17px);
+                opacity: 1;
+            }
+            24%,
+            80% {
+                -webkit-transform: translateX(-22px);
+                transform: translateX(-22px);
+                opacity: 0;
+            }
+            81% {
+                opacity: 1;
+                -webkit-transform: translateX(-22px);
+                transform: translateX(-22px);
+            }
+        }
+        
+        @keyframes arrow {
+            0%,
+            100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+                opacity: 1;
+            }
+            23% {
+                -webkit-transform: translateX(17px);
+                transform: translateX(17px);
+                opacity: 1;
+            }
+            24%,
+            80% {
+                -webkit-transform: translateX(-22px);
+                transform: translateX(-22px);
+                opacity: 0;
+            }
+            81% {
+                opacity: 1;
+                -webkit-transform: translateX(-22px);
+                transform: translateX(-22px);
+            }
+        }
+        
+        @-webkit-keyframes arrowUp {
+            0%,
+            100% {
+                -webkit-transform: rotate(-40deg) scaleX(1);
+                transform: rotate(-40deg) scaleX(1);
+            }
+            20%,
+            80% {
+                -webkit-transform: rotate(0deg) scaleX(0.1);
+                transform: rotate(0deg) scaleX(0.1);
+            }
+        }
+        
+        @keyframes arrowUp {
+            0%,
+            100% {
+                -webkit-transform: rotate(-40deg) scaleX(1);
+                transform: rotate(-40deg) scaleX(1);
+            }
+            20%,
+            80% {
+                -webkit-transform: rotate(0deg) scaleX(0.1);
+                transform: rotate(0deg) scaleX(0.1);
+            }
+        }
+        
+        @-webkit-keyframes arrowDown {
+            0%,
+            100% {
+                -webkit-transform: rotate(40deg) scaleX(1);
+                transform: rotate(40deg) scaleX(1);
+            }
+            20%,
+            80% {
+                -webkit-transform: rotate(0deg) scaleX(0.1);
+                transform: rotate(0deg) scaleX(0.1);
+            }
+        }
+        
+        @keyframes arrowDown {
+            0%,
+            100% {
+                -webkit-transform: rotate(40deg) scaleX(1);
+                transform: rotate(40deg) scaleX(1);
+            }
+            20%,
+            80% {
+                -webkit-transform: rotate(0deg) scaleX(0.1);
+                transform: rotate(0deg) scaleX(0.1);
+            }
+        }
+        
+        .demo {
+            display: grid;
+            grid-template-columns: repeat(2, 44px);
+            grid-gap: 32px;
+        }
+        
+        html {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        * {
+            box-sizing: inherit;
+        }
+        
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            background: #275EFE;
+        }
+        
+        body .dribbble {
+            position: fixed;
+            display: block;
+            right: 24px;
+            bottom: 24px;
+        }
+        
+        body .dribbble img {
+            display: block;
+            width: 76px;
+        }
+    </style>
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+    <div class="demo">
+        <a href="" class="arrow left">
+            <i></i>
+            <svg>
+<use xlink:href="#circle">
+</svg>
+        </a>
+        <a href="" class="arrow">
+            <i></i>
+            <svg>
+<use xlink:href="#circle">
+</svg>
+        </a>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44px" height="44px" id="circle" fill="none" stroke="currentColor">
+<circle r="20" cy="22" cx="22" id="test">
+</symbol>
+</svg>
+
+    <a class="dribbble" href="https://dribbble.com/shots/6201452-Arrow-micro-interaction" target="_blank"><img src="https://dribbble.com/assets/logo-small-2x-9fe74d2ad7b25fba0f50168523c15fda4c35534f9ea0b1011179275383035439.png" alt=""></a>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script id="rendered-js">
+        $('.arrow').on('click touch', function(e) {
+
+            e.preventDefault();
+
+            let arrow = $(this);
+
+            if (!arrow.hasClass('animate')) {
+                arrow.addClass('animate');
+                setTimeout(() => {
+                    arrow.removeClass('animate');
+                }, 1600);
+            }
+
+        });
+        //# sourceURL=pen.js
+    </script>
+</body>
+
+</html>
